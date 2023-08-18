@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7hive_first/add_todo.dart';
 import 'package:flutter_application_7hive_first/dialogbox.dart';
 import 'package:flutter_application_7hive_first/todo.dart';
+import 'package:flutter_application_7hive_first/update.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,7 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text('No Data Available '),
             );
           } else {
-            return ListView.builder(
+            return ListView.separated(
+              separatorBuilder: (context, index) => const SizedBox(
+                height: 10,
+              ),
               reverse: true,
               shrinkWrap: true,
               itemCount: box.length,
@@ -65,40 +69,27 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         IconButton(
                           onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return DialogBox(
-                                  controller: tx,
-                                  onsave: () {
-                                    String updatedTitle = tx.text;
-                                    Todo updatedTodo = Todo(
-                                      title: updatedTitle,
-                                      isComplete: todo.isComplete,
-                                    );
-                                    updateTodoAt(index, updatedTodo);
-                                    Navigator.pop(context);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content:
-                                            Text("Todo updated successfully !"),
-                                      ),
-                                    );
-                                  },
-                                );
-                              },
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    updateuser(username: todo.title),
+                              ),
                             );
                           },
                           icon: const Icon(
                             Icons.edit,
-                            color: Colors.red,
+                            color: Colors.blue,
                           ),
                         ),
                         IconButton(
                           onPressed: () {
                             box.deleteAt(index);
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text("Todo deleted successfully !")));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("Todo deleted successfully !"),
+                              ),
+                            );
                           },
                           icon: const Icon(
                             Icons.delete,
@@ -108,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  tileColor: Colors.yellow,
+                  tileColor: Colors.lightBlue[100],
                 );
               },
             );
