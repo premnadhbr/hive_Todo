@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_7hive_first/todo.dart';
 import 'package:hive/hive.dart';
 
-class updateuser extends StatefulWidget {
+class UpdateUser extends StatefulWidget {
   final String username;
-  updateuser({super.key, required this.username});
+  const UpdateUser({super.key, required this.username});
 
   @override
-  State<updateuser> createState() => _updateuserState();
+  State<UpdateUser> createState() => _UpdateUserState();
 }
 
-class _updateuserState extends State<updateuser> {
+class _UpdateUserState extends State<UpdateUser> {
   TextEditingController textEditingController = TextEditingController();
 
   Box todobox = Hive.box<Todo>('todo');

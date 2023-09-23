@@ -44,7 +44,7 @@ class AddTodo extends StatelessWidget {
     );
   }
 
-  addnote(BuildContext context) {
+   addnote(BuildContext context) {
     if (textEditingController.text != '') {
       Todo newtodo = Todo(title: textEditingController.text, isComplete: false);
       todobox.add(newtodo);

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7hive_first/homescreen.dart';
-import 'package:flutter_application_7hive_first/todo.dart'; 
+import 'package:flutter_application_7hive_first/todo.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
-  
- await Hive.initFlutter();
+  await Hive.initFlutter();
   //register the adapter
   Hive.registerAdapter(TodoAdapter());
-  // type this box only contain todo data
+  // this box only contain todo data
   await Hive.openBox<Todo>('todo');
 
   runApp(const MyApp());

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_7hive_first/add_todo.dart';
-import 'package:flutter_application_7hive_first/dialogbox.dart';
 import 'package:flutter_application_7hive_first/todo.dart';
 import 'package:flutter_application_7hive_first/update.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -73,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    updateuser(username: todo.title),
+                                    UpdateUser(username: todo.title),
                               ),
                             );
                           },
